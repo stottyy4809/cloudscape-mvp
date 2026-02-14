@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudScale | LLM Deployment & Cost Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">☁️ CloudScale</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#" class="btn-signup">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Deploy LLMs. Know Your Performance. Save Money.</h1>
+        <p>Real-time throughput & cost comparison across all major clouds.</p>
+        
+        <div class="calculator-mockup">
+            <div class="calc-inputs">
+                <div class="input-group">
+                    <label>Select a Model</label>
+                    <select id="model-select">
+                        <option value="llama3-a100">Meta Llama-3-70B</option>
+                        <option value="mixtral-a100">Mixtral 8x7B</option>
+                        <option value="mistral-a100">Mistral-7B Instruct</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Choose Hardware</label>
+                    <select id="gpu-select">
+                        <option value="a100">NVIDIA A100 (80GB)</option>
+                        <option value="h100">NVIDIA H100</option>
+                        <option value="rtx4090">NVIDIA RTX 4090</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-results">
+                <div class="result-card blue">
+                    <h3>Expected Throughput</h3>
+                    <div class="value" id="throughput-val">4,200 <span class="unit">tokens/min</span></div>
+                </div>
+                <div class="result-card green">
+                    <h3>Lowest Cost</h3>
+                    <div class="value" id="cost-val">$1.85 <span class="unit">/hr</span></div>
+                    <div class="provider-badge">via RunPod</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Unlock Real-time Data</h2>
+        <p>Choose the plan that fits your scale. From side projects to enterprise deployments.</p>
+        
+        <div class="pricing-cards">
+            <div class="card cyan-theme">
+                <div class="card-header">
+                    <h3>Free Tier</h3>
+                    <div class="price">$0</div>
+                </div>
+                <ul class="features">
+                    <li>Basic Model Compatibility Checks</li>
+                    <li>Daily-Updated Cloud Pricing</li>
+                    <li>Community Support</li>
+                </ul>
+                <button class="btn-plan">Get Started Free</button>
+            </div>
+
+            <div class="card orange-theme pro">
+                <div class="badge">Most Popular</div>
+                <div class="card-header">
+                    <h3>Pro Tier</h3>
+                    <div class="price">$49<span>/mo</span></div>
+                </div>
+                <ul class="features">
+                    <li>Real-time Pricing & Availability</li>
+                    <li>Customizable Alerts</li>
+                    <li>API Access (1,000 req/month)</li>
+                    <li>Priority Email Support</li>
+                </ul>
+                <button class="btn-plan">Start 14-Day Free Trial</button>
+            </div>
+
+            <div class="card purple-theme">
+                <div class="card-header">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                </div>
+                <ul class="features">
+                    <li>Dedicated Account Manager</li>
+                    <li>On-Demand Benchmarking</li>
+                    <li>SLA Uptime Guarantee</li>
+                    <li>Volume Licensing & Integrations</li>
+                </ul>
+                <button class="btn-plan">Contact Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="table-section">
+        <h2>Top LLM Deployments</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Quantization</th>
+                        <th>GPU</th>
+                        <th>Throughput (tok/s)</th>
+                        <th>Cost/Hour</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Llama-3-70B</td>
+                        <td>AWQ 4-bit</td>
+                        <td>NVIDIA A100 (x1)</td>
+                        <td>~80</td>
+                        <td>$1.85</td>
+                    </tr>
+                    <tr>
+                        <td>Mixtral 8x7B</td>
+                        <td>fp16</td>
+                        <td>NVIDIA H100 (x2)</td>
+                        <td>~140</td>
+                        <td>$8.50</td>
+                    </tr>
+                    <tr>
+                        <td>Mistral-7B</td>
+                        <td>GGUF 8-bit</td>
+                        <td>RTX 4090 (x1)</td>
+                        <td>~65</td>
+                        <td>$0.40</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 CloudScale. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
