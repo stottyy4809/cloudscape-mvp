@@ -1,0 +1,30 @@
+name: Daily AWS Price Update
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs at midnight every day
+  workflow_dispatch: # Allows you to run it manually for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install boto3
+      - name: Run AWS Fetcher
+        run: python fetch_prices.py
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'CloudScale-Bot'
+          git config --global user.email 'bot@cloudscale.io'
+          git add pricing.json
+          git commit -m "Automated daily price update" || exit 0
+          git push
